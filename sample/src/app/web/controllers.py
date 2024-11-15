@@ -1,7 +1,8 @@
 import logging as log
 import os
 from flask import Flask, render_template, request
-from .. import settings
+# from ..settings import settings
+import app.settings as settings
 from . import bp
 
 

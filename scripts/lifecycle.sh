@@ -14,7 +14,9 @@ section "Create a Cluster"
 # info "--port 8080:80@loadbalancer: map localhost:8080 to port 80 on the loadbalancer (used for ingress)"
 # info "--volume $(pwd)/sample:/src@all: mount the sub directory sample of the current directory to /src in all nodes (used for code)"
 # info "--wait: wait for all server nodes to be up before returning"
-info_pause_exec "Create a cluster" "k3d cluster create demo --api-port 6550 --servers 1 --agents 3 --port 8080:80@loadbalancer --volume $(pwd)/sample:/src@all --wait"
+info_pause_exec "Create a cluster" "k3d cluster create demo --api-port 6550 --servers 1 --agents 3 --port 8080:80@loadbalancer -v $(pwd)/sample:/src@all --wait"
+# info_pause_exec "Create a cluster" "k3d cluster create demo --api-port 6550 --servers 1 --agents 3 --port 8080:80@loadbalancer --volume $(pwd)/sample:/src@all --volume /etc/ssl/certs/zscalermaster.pem:/etc/ssl/certs/zscalermaster.pem k3d cluster create ... --wait"
+# info_pause_exec "Create a cluster" "k3d cluster create --config assets/k3d-config-cluster.yaml --wait"
 
 section "Access the Cluster"
 
